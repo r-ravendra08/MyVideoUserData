@@ -3,14 +3,17 @@ package com.userdata.repository;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
 
-import com.userdata.entity.UserInfo;
+import com.userdata.entity.Users;
 
 import java.util.Optional;
-import java.util.List;
 
 @Repository
-public interface UserInfoRepository extends JpaRepository<UserInfo, Integer> {
-	Optional<UserInfo> findByName(String username);
+public interface UsersRepository extends JpaRepository<Users, Integer> {
+	Optional<Users> findByEmail(String email);
+
+	Optional<Users> findByMobileOrEmail(String mobile, String email);
+
+	Optional<Users> findByMobile(String mobile);
 
 	Boolean existsByMobile(String mobile);
 
